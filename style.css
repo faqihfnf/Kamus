@@ -58,12 +58,20 @@ body.dark {
   font-weight: 500;
   color: var(--light-text-color);
   white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+.copy-sound {
+  display: flex;
+  gap: 15px;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .dropdown-container {
   position: relative;
   margin-bottom: 10px;
-  width: 100%;
+  width: 80%;
 }
 
 .dropdown-container .dropdown-toggle {

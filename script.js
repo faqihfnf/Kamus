@@ -138,3 +138,31 @@ const darkModeBtn = document.getElementById("dark-mode-btn");
 darkModeBtn.addEventListener("change", (e) => {
   document.body.classList.toggle("dark");
 });
+
+//? function copy text & sound
+
+const icons = document.querySelectorAll(".copy-sound");
+
+icons.forEach((icon) => {
+  icon.addEventListener("click", ({ target }) => {
+    if (target.classList.contains("copy-outline")) {
+      const textToCopy = target.id === "from" ? inputTextElement.value : outputTextElement.value;
+      navigator.clipboard.writeText(textToCopy);
+    } else {
+      let textToSpeech;
+      let langValue;
+
+      if (target.id === "from") {
+        textToSpeech = inputTextElement.value;
+        langValue = inputLanguage.dataset.value;
+      } else {
+        textToSpeech = outputTextElement.value;
+        langValue = outputLanguage.dataset.value;
+      }
+
+      const utterance = new SpeechSynthesisUtterance(textToSpeech);
+      utterance.lang = langValue;
+      speechSynthesis.speak(utterance);
+    }
+  });
+});
